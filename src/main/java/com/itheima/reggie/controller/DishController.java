@@ -20,6 +20,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -56,6 +57,9 @@ public class DishController {
 
         dishService.saveWithFlavor(dishDto);
 
+        //清理相关菜品缓存
+        String key = "dish_"+dishDto.getCategoryId()+"_1";
+        redisTemplate.delete(key);
         return R.success("新增菜品成功");
     }
 
@@ -133,6 +137,9 @@ public class DishController {
 
         dishService.updateWithFlavor(dishDto);
 
+        //清理更新的菜品的缓存
+        String key = "dish_"+dishDto.getCategoryId()+"_1";
+        redisTemplate.delete(key);
         return R.success("修改菜品成功");
     }
 
