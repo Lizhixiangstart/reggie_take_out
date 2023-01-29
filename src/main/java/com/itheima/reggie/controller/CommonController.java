@@ -13,6 +13,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -67,9 +68,9 @@ public class CommonController {
      * @param response
      */
     @GetMapping("/download")
-    public void download(String name, HttpServletResponse response){
+    public void download(String name, HttpServletResponse response) throws IOException {
 
-        try {
+
             //输入流，通过输入流读取文件内容
             FileInputStream fileInputStream = new FileInputStream(new File(basePath + name));
 
@@ -88,9 +89,7 @@ public class CommonController {
             //关闭资源
             outputStream.close();
             fileInputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
     }
 }
