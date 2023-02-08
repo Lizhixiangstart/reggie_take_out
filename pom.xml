@@ -92,10 +92,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <!--sharding-jdbc实现主从复制-->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
             <version>4.0.0-RC1</version>
+        </dependency>
+        <!--knife4j是为JavaMVC框架继承Swagger生成api文档的增强方案
+        使用方式：
+            1.导入knife4j坐标
+            2.导入knife4j相关配置类
+            3.设置静态资源，否则接口文档页面无法访问
+            4.在拦截器中放行接口文档相关urlpattern
+        -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
     </dependencies>
     <build>
@@ -106,5 +119,5 @@
                 <version>2.7.7</version>
             </plugin>
         </plugins>
-    </build>
+        </build>
 </project>

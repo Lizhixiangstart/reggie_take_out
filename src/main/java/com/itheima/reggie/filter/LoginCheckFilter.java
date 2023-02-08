@@ -1,10 +1,12 @@
 package com.itheima.reggie.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import com.itheima.reggie.common.BaseContext;
 import com.itheima.reggie.common.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -40,7 +42,11 @@ public class LoginCheckFilter implements Filter{
                 "/common/**",
                 "/user/sendMsg",
                 "/user/login",
-                "/"
+                "/",
+                "/doc.html",
+                "/webjars/**",
+                "/swagger-resources",
+                "/v2/api-docs"
         };
 
         //2、判断本次请求是否需要处理
